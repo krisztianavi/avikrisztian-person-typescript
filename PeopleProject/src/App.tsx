@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Person } from './Interface + Stats/Person';
+import { PersonStatistics } from './Interface + Stats/PersonStatistics';
 
-function App() {
-  const [count, setCount] = useState(0)
+const people: Person[] = [
+    { id: 1, 
+      name: "Szalai József", 
+      age: 18, 
+      isStudent: true, 
+      score: 65 
+    },
+      
+    { 
+      id: 2, 
+      name: "Faragó Henrik", 
+      age: 30, 
+      isStudent: false, 
+      score: 87
+    },
+    
+    { id: 3, 
+      name: "Király Roland", 
+      age: 22, 
+      isStudent: true, 
+      score: 91
+    },
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    {
+      id: 4,
+      name: "Simon Noel",
+      age: 16,
+      isStudent: true,
+      score: 53
+    },
+
+    {
+      id: 5,
+      name: "",
+      age: 12,
+      isStudent: true,
+      score: 26
+    }
+];
+
+const stats = new PersonStatistics(people);
+const averageAge = stats.GetAverageAge();
+
+const App: React.FC = () => {
+    return (
+        <div>
+            <h1>Average Age</h1>
+            <p>{averageAge}</p>
+        </div>
+    );
 }
 
-export default App
+export default App;
