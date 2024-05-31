@@ -1,7 +1,7 @@
 import { Person } from './Person';
 
 export class PersonStatistics {
-    private _people: Person[] = [];
+    private lpeople: Person[] = [];
 
     constructor(people: Person[]) {
         this.people = people;
@@ -11,15 +11,19 @@ export class PersonStatistics {
         if (people === null) {
             throw new Error('A lista null értéket nem vehet fel!');
         }
-        this._people = people;
+        this.lpeople = people;
     }
 
     public get people(): Person[] {
-        return this._people;
+        return this.lpeople;
     }
 
     public GetAverageAge(): number {
-        const totalAge = this._people.reduce((sum, person) => sum + person.age, 0);
-        return this._people.length > 0 ? totalAge / this._people.length : 0;
+        const totalAge = this.lpeople.reduce((sum, person) => sum + person.age, 0);
+        return this.lpeople.length > 0 ? totalAge / this.lpeople.length : 0;
+    }
+
+    public GetNumberOfStudents(): number {
+        return this.lpeople.filter(person => person.isStudent).length;
     }
 }

@@ -20,7 +20,7 @@ const people: Person[] = [
     { id: 3, 
       name: "Király Roland", 
       age: 22, 
-      isStudent: true, 
+      isStudent: false, 
       score: 91
     },
 
@@ -42,13 +42,17 @@ const people: Person[] = [
 ];
 
 const stats = new PersonStatistics(people);
-const averageAge = stats.GetAverageAge();
 
 const App: React.FC = () => {
     return (
         <div>
             <h1>Average Age</h1>
-            <p>{averageAge}</p>
+            <p>{stats.GetAverageAge()}</p>
+            <br />
+
+            <h1>Number of Students</h1>
+            <p>{stats.GetNumberOfStudents()}</p>
+            <br />
         </div>
     );
 }
