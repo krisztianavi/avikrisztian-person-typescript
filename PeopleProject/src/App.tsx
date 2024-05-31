@@ -1,5 +1,6 @@
 import { Person } from './Interface + Stats/Person';
 import { PersonStatistics } from './Interface + Stats/PersonStatistics';
+import './App.css'
 
 const people: Person[] = [
   {
@@ -50,10 +51,10 @@ const App: React.FC = () => {
   const oldestStudent = stats.GetOldestStudent();
 
   return (
-    <div>
-      <h1>Average Age</h1>
-        <p>{stats.GetAverageAge()}</p>
-      <br />
+    <div className='container'>
+        <h1>Average Age</h1>
+          <p>{stats.GetAverageAge()}</p>
+        <br />
 
       <h1>Number of Students</h1>
         <p>{stats.GetNumberOfStudents()}</p>
