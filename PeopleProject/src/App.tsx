@@ -5,7 +5,7 @@ const people: Person[] = [
   {
     id: 1,
     name: "Szalai József",
-    age: 18,
+    age: 19,
     isStudent: true,
     score: 65
   },
@@ -36,7 +36,7 @@ const people: Person[] = [
 
   {
     id: 5,
-    name: "",
+    name: "Kengyel Ferenc",
     age: 12,
     isStudent: true,
     score: 26
@@ -47,6 +47,7 @@ const stats = new PersonStatistics(people);
 
 const App: React.FC = () => {
   const personWithHighestScore = stats.GetPersonWithHighestScore();
+  const oldestStudent = stats.GetOldestStudent();
 
   return (
     <div>
@@ -61,11 +62,14 @@ const App: React.FC = () => {
       <h1>Person with Highest Score</h1>
         {personWithHighestScore && (<p>{personWithHighestScore.name}</p>)}
       <br />
-      
+
       <h1>Average Score of Students</h1>
         <p>{stats.GetAverageScoreOfStudents()}</p>
       <br />
 
+      <h1>Oldest Student</h1>
+        {oldestStudent && (<p>{oldestStudent.name}</p>)}
+      <br />
     </div>
   );
 }

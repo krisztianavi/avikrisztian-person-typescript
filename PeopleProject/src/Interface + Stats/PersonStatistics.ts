@@ -41,4 +41,10 @@ export class PersonStatistics {
         return validStudentsCount > 0 ? totalScore / validStudentsCount : 0;
     }
 
+    public GetOldestStudent(): Person | null {
+        const validStudents = this.lpeople.filter(person => person.isStudent && person.age !== null);
+        if (validStudents.length === 0) return null;
+        return validStudents.reduce((oldest, student) => student.age > oldest.age ? student : oldest);
+    }
+
 }
