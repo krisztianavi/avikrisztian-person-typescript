@@ -20,16 +20,25 @@ export class PersonStatistics {
 
     public GetAverageAge(): number {
         const totalAge = this.lpeople.reduce((sum, person) => sum + person.age, 0);
-        return this.lpeople.length > 0 ? totalAge / this.lpeople.length : 0;
+        const validPeopleCount = this.lpeople.filter(person => person.age !== null).length;
+        return validPeopleCount > 0 ? totalAge / validPeopleCount : 0;
     }
 
     public GetNumberOfStudents(): number {
-        return this.lpeople.filter(person => person.isStudent).length;
+        return this.lpeople.filter(person => person.isStudent && person.age !== null).length;
+    }
+
+    public GetPersonWithHighestScore(): Person | null {
+        const validPeople = this.lpeople.filter(person => person.score !== null);
+        if (validPeople.length === 0) return null;
+        return validPeople.reduce((max, person) => person.score > max.score ? person : max);
     }
 
     public GetAverageScoreOfStudents(): number {
-        const students = this.lpeople.filter(person => person.isStudent);
-        const totalScore = students.reduce((sum, student) => sum + student.score, 0);
-        return students.length > 0 ? totalScore / students.length : 0;
+        const validStudents = this.lpeople.filter(person => person.isStudent && person.score !== null);
+        const totalScore = validStudents.reduce((sum, student) => sum + student.score, 0);
+        const validStudentsCount = validStudents.length;
+        return validStudentsCount > 0 ? totalScore / validStudentsCount : 0;
     }
+
 }
