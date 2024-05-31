@@ -53,6 +53,10 @@ const App: React.FC = () => {
             <h1>Number of Students</h1>
             <p>{stats.GetNumberOfStudents()}</p>
             <br />
+
+            <h1>Average Score of Students</h1>
+            <p>{stats.GetAverageScoreOfStudents()}</p>
+            <br />
         </div>
     );
 }

@@ -26,4 +26,10 @@ export class PersonStatistics {
     public GetNumberOfStudents(): number {
         return this.lpeople.filter(person => person.isStudent).length;
     }
+
+    public GetAverageScoreOfStudents(): number {
+        const students = this.lpeople.filter(person => person.isStudent);
+        const totalScore = students.reduce((sum, student) => sum + student.score, 0);
+        return students.length > 0 ? totalScore / students.length : 0;
+    }
 }
