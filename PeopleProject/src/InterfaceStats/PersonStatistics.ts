@@ -51,4 +51,16 @@ export class PersonStatistics {
         return this.lpeople.some(person => person.score !== null && person.score < 40);
     }
 
+    public setScore(personId: number, score: number): void {
+        const personIndex = this.lpeople.findIndex(person => person.id === personId);
+        if (personIndex !== -1) {
+            if (score >= 0 && score <= 100) {
+                this.lpeople[personIndex].score = score;
+            } else {
+                throw new Error('A pontszám csak 0 és 100 között lehet!');
+            }
+        } else {
+            throw new Error('Nem található személy ezzel az azonosítóval!');
+        }
+    }
 }
