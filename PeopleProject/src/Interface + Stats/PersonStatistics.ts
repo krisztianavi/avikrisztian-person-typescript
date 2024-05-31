@@ -47,4 +47,8 @@ export class PersonStatistics {
         return validStudents.reduce((oldest, student) => student.age > oldest.age ? student : oldest);
     }
 
+    public IsAnyoneFailing(): boolean {
+        return this.lpeople.some(person => person.score !== null && person.score < 40);
+    }
+
 }

@@ -70,6 +70,10 @@ const App: React.FC = () => {
       <h1>Oldest Student</h1>
         {oldestStudent && (<p>{oldestStudent.name}</p>)}
       <br />
+
+      <h1>Is Anyone Failing</h1>
+        <p>{stats.IsAnyoneFailing() ? 'Yes' : 'No'}</p>
+      <br />
     </div>
   );
 }
